@@ -30,3 +30,40 @@
 * 双重锁模式：实例延迟加载，通过使用volatile修饰实例，保证多线程安全，在getInstance中使用synchronized的对象锁，保证创建实例时的同步锁
 
 在使用单例模式创建实例时，推荐使用1，若明确需求要延迟加载再考虑2、3
+
+## 建造者模式⭐️
+
+建造者模式比较独立，将对象本身与构建过程解耦。使用多个简单的对象一步一步构建成一个复杂的对象。这种类型的设计模式属于创建型模式，提供了创建对象的最佳方式。一个Builder类会一步一步构造最终的对象。该Builder类是独立于其他对象的。
+
+```java
+public class NewMusic {
+    private String writeWord;
+    private String writeMusic;
+
+    public NewMusic(Builder builder) {
+        this.writeMusic = builder.writeMusic;
+        this.writeWord = builder.writeWord;
+    }
+
+    protected static class Builder{
+        private String writeWord;
+        private String writeMusic;
+
+        protected Builder composer(String composer){
+            this.writeMusic = composer;
+            return this;
+        }
+
+        protected Builder writer(String writer){
+            this.writeWord = writer;
+            return this;
+        }
+
+        protected NewMusic build(){
+            return new NewMusic(this);
+        }
+    }
+}
+```
+
+`NewMusic newMusic = new NewMusic.Builder().composer("chenshinan").writer("jaychou").build();`
