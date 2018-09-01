@@ -1,4 +1,4 @@
-## 工厂模式
+## 工厂模式：Factory Pattern
 
 用工厂模式来替代new的主要原因是：
 
@@ -8,7 +8,7 @@
 
 * 3、当构建一个对象需要附带一系列的动作、逻辑代码等，而这些大量代码尽量不放到构造函数中，把要做的事情解藕出来，因此在此处执行额外要做的事情
 
-## 抽象工厂模式
+## 抽象工厂模式：Abstract Factory Pattern
 
 抽象工厂模式，应用于模板一样的一系列产品的构建
 
@@ -21,7 +21,7 @@
 
 * 当增加一个产品耳机Head时，只需要增加Head接口及不同厂家的实现类DbHead、DbHead，及在抽象工厂中增加创建新产品的方法createHead
 
-## 单例模式
+## 单例模式：Singleton Pattern
 
 * 简单模式，加载类时就加载出实例，多线程安全，没有加锁
 
@@ -31,7 +31,7 @@
 
 在使用单例模式创建实例时，推荐使用1，若明确需求要延迟加载再考虑2、3
 
-## 建造者模式⭐️
+## 建造者模式⭐️：Builder Pattern
 
 建造者模式比较独立，将对象本身与构建过程解耦。使用多个简单的对象一步一步构建成一个复杂的对象。这种类型的设计模式属于创建型模式，提供了创建对象的最佳方式。一个Builder类会一步一步构造最终的对象。该Builder类是独立于其他对象的。
 
@@ -66,4 +66,20 @@ public class NewMusic {
 }
 ```
 
-`NewMusic newMusic = new NewMusic.Builder().composer("chenshinan").writer("jaychou").build();`
+`NewMusic newMusic = new NewMusic.Builder().composer("chenshinan").writer("jaychou").build()`
+
+## 原型模式：ProtoType Pattern
+
+针对于构建过程复杂、繁琐的对象，又有频繁创建实例的场景，可以考虑使用原型模式克隆出新实例，根据需求选择浅拷贝【通过构造函数】与深拷贝【通过序列化】
+
+### 浅拷贝实现：复制对象，对象属性是同一个引用
+
+* 实现Cloneable接口，重写clone方法
+
+* 通过传入对象的构造函数【推荐】
+
+### 深拷贝实现：复制对象，包括对象属性也是全新对象
+
+* 序列号，实现Serializable接口，添加deepCopy方法，用流复制对象【推荐】
+
+* 通过传入对象的构造函数，若有对象属性需要new，子对象需要实现同样的构造函数
