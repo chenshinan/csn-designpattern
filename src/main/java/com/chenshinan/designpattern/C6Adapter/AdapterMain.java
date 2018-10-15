@@ -1,5 +1,8 @@
 package com.chenshinan.designpattern.C6Adapter;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
 /**
  * @author shinan.chen
  * @date 2018/9/1
@@ -31,5 +34,7 @@ public class AdapterMain {
          */
         NormalComputer test = new NormalComputer();
         test.method2();
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     }
 }
