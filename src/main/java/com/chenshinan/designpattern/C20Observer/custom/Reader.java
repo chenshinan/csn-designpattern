@@ -11,7 +11,7 @@ public class Reader implements Observer {
 
     public void update(Subject subject) {
         //这是采用拉的方式
-        System.out.println(name + "收到报纸了，阅读先。内容是===" + ((NewsPaper) subject).getContent());
+        System.out.println(name + "收到报纸了，阅读内容是：" + ((NewsPaper) subject).getContent());
     }
 
     public String getName() {

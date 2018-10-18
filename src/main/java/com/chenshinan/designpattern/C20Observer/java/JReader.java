@@ -16,10 +16,10 @@ public class JReader implements Observer {
     @Override
     public void update(Observable o, Object obj) {
         //这是采用推的方式
-        System.out.println(name + "收到报纸了，阅读先。目标推过来的内容是===" + obj);
+        System.out.println(name + "【推】收到报纸了，阅读内容是：" + obj);
 
         //这是获取拉的数据
-        System.out.println(name + "收到报纸了，阅读先。主动到目标对象去拉的内容是===" + ((JNewsPaper) o).getContent());
+        System.out.println(name + "【拉】收到报纸了，阅读内容是：" + ((JNewsPaper) o).getContent());
     }
 
     public String getName() {
