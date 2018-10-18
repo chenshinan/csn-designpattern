@@ -341,6 +341,35 @@ public void update(Observable o, Object obj) {
 }
 ```
 
+`使用RxJava实现的观察者模式`：
+
+```java
+Observable.just("本期内容是观察者模式")//创建上游 observable
+                .subscribe(new Observer<String>() {//创建下游 observer
+
+                    private String name = "小明";
+
+                    @Override
+                    public void onSubscribe(Disposable disposable) {
+                    }
+
+                    @Override
+                    public void onNext(String value) {
+                        System.out.println(name + "收到报纸了，阅读内容是：" + value);
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        System.out.println("完成");
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        System.out.println("error");
+                    }
+                });
+```
+
 `适用于`：
 
         当一个抽象模型有两个方面，其中一个方面的操作依赖于另一个方面的状态变化，那么就可以选用观察者模式
